@@ -1,7 +1,5 @@
-![tnn](https://github.com/lkmklsmn/bbtnn/blob/master/examples/test1.png)
-
 # tnn
-**b**atch **b**alanced **t**riplet **n**eural **n**etwork
+**t**riplet **n**eural **n**etwork for data integration
 
 The tnn calculates a deep integrated embedding for scRNA-seq data. With tnn, you can:
 
@@ -10,7 +8,7 @@ The tnn calculates a deep integrated embedding for scRNA-seq data. With tnn, you
 * Accurately predict cell types for an independent scRNAseq dataset.
 * Integration of millions of cells on personal computers.
 
-
+![tnn](https://github.com/lkmklsmn/tnn/blob/master/TNN_schematic.jpg)
 
 ## Check out our interactive tutorials!
 The following notebooks allow you to interactively explore bbtnn and can be run within your browser. We have prepared two analysis examples:
