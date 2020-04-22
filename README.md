@@ -12,7 +12,7 @@ The tnn calculates a deep integrated embedding for scRNA-seq data. With tnn, you
 
 
 
-## Check out out live tutorial!
+## Check out our interactive tutorials!
 The following notebooks allow you to interactively explore bbtnn and can be run within your browser. We have prepared two analysis examples:
 1. [Simulation dataset](https://github.com/lkmklsmn/bbtnn/tree/master/examples/TNN_Simulation.ipynb)
 2. [Pancreas dataset](https://github.com/lkmklsmn/bbtnn/tree/master/examples/TNN_pancreas_comparison.ipynb)
