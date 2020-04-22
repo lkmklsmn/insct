@@ -101,14 +101,11 @@ def generator_from_index(adata, batch_name, celltype_name, mask_batch=None, cell
 
         print (len(set(mnn_dict.keys())&set(label_dict.keys())))
 
-    
-    num_k = round(k_to_m_ratio * len(mnn_dict))
-    
-    if num_k == 0:
+    if k_to_m_ratio == 0.0:
         knn_dict = dict()
         
     else:
-        
+        num_k = round(k_to_m_ratio * len(mnn_dict))
         # Calculate KNNs for subset of residual cells
         cells_for_knn = list(set(cells) - set(list(label_dict.keys()))| set(list(mnn_dict.keys())))
         if(len(cells_for_knn) > num_k):
