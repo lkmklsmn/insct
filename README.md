@@ -19,25 +19,18 @@ The following notebooks allow you to interactively explore bbtnn and can be run 
 
 ## Installation
 
-To install **bbtnn**, you must make sure that your python version is 3.x.x. 
+To install **tnn**, you must make sure that your python version is 3.x.x. 
 
 Now you can install the current release of bbtnn by the following ways:
 
-### Pypi 
-
-Directly install the package from Pypi.
-
-```alias
-$ pip install bbtnn
-```
 
 ### Github
 
 Download the package from Github and install it locally:
 
 ```alias
-git clone http://github.com/lkmklsmn/bbtnn
-cd bbtnn
+git clone http://github.com/lkmklsmn/tnn
+cd tnn
 pip install .
 ```
 ## Input
@@ -59,20 +52,20 @@ pip install .
 ### Unsupervised model
 
 ```alias
-from bbtnn.tnn_v3 import BBTNN
-model = BBTNN(k=50, distance='pn', batch_size=32, n_epochs_without_progress=10, k_to_m_ratio = 0.01)
+from tnn.tnn import TNN
+model = TNN(k=50, distance='pn', batch_size=32, n_epochs_without_progress=10, k_to_m_ratio = 0.01)
 model.fit(X = adata, Y = None, batch_name='batch')
 ```
 
 ### Supervised model
 ```alias
-model = BBTNN(k=50, distance='pn', batch_size=64, n_epochs_without_progress=10, approx = False)
+model = TNN(k=50, distance='pn', batch_size=64, n_epochs_without_progress=10, approx = False)
 model.fit(X = adata, Y = None, batch_name='batch', celltype_name='Celltypes', cell_labeled = True)
 ```
 
 ### Semi-supervised model
 
 ```alias
-model = BBTNN(k=50, distance='pn', batch_size=64, n_epochs_without_progress=10, approx = False)
+model = TNN(k=50, distance='pn', batch_size=64, n_epochs_without_progress=10, approx = False)
 model.fit(X = adata, Y = None, batch_name='batch', celltype_name='Celltypes', cell_labeled = True, mask_batch= batch_name)
 ```
