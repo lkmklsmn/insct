@@ -1,9 +1,9 @@
-![bbtnn](https://github.com/lkmklsmn/bbtnn/blob/master/examples/test1.png)
+![tnn](https://github.com/lkmklsmn/bbtnn/blob/master/examples/test1.png)
 
-# bbtnn
+# tnn
 **b**atch **b**alanced **t**riplet **n**eural **n**etwork
 
-The bbtnn calculates a deep integrated embedding for scRNA-seq data. With bbtnn, you can:
+The tnn calculates a deep integrated embedding for scRNA-seq data. With tnn, you can:
 
 * Integrate scRNA-seq datasets across batches with/without labels.
 * Build a low-dimensional representation of the scRNA-seq data.
