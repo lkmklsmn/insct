@@ -103,19 +103,24 @@ def generator_from_index(adata, batch_name, celltype_name, mask_batch=None, cell
 
     
     num_k = round(k_to_m_ratio * len(mnn_dict))
+    
+    if num_k == 0:
+        knn_dict = dict()
+        
+    else:
+        
+        # Calculate KNNs for subset of residual cells
+        cells_for_knn = list(set(cells) - set(list(label_dict.keys()))| set(list(mnn_dict.keys())))
+        if(len(cells_for_knn) > num_k):
+            cells_for_knn = np.random.choice(cells_for_knn, num_k, replace = False)
 
-    # Calculate KNNs for subset of residual cells
-    cells_for_knn = list(set(cells) - set(list(label_dict.keys()))| set(list(mnn_dict.keys())))
-    if(len(cells_for_knn) > num_k):
-        cells_for_knn = np.random.choice(cells_for_knn, num_k, replace = False)
+        if(verbose > 0):
+            print("Calculating KNNs...")
 
-    if(verbose > 0):
-        print("Calculating KNNs...")
-           
-    cdata = adata[cells_for_knn]
-    knn_dict = create_dictionary_knn(cdata, cells_for_knn, k = k, save_on_disk = save_on_disk, approx = approx)
-    if(verbose > 0):
-        print(str(len(cells_for_knn)) + " cells defined as KNNs")
+        cdata = adata[cells_for_knn]
+        knn_dict = create_dictionary_knn(cdata, cells_for_knn, k = k, save_on_disk = save_on_disk, approx = approx)
+        if(verbose > 0):
+            print(str(len(cells_for_knn)) + " cells defined as KNNs")
 
     final_dict = merge_dict(mnn_dict, label_dict)
     final_dict.update(knn_dict)
