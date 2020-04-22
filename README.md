@@ -1,7 +1,7 @@
 # tnn
 **t**riplet **n**eural **n**etwork for data integration
 
-The tnn calculates a deep integrated embedding for scRNA-seq data. With tnn, you can:
+tnn calculates an integrated embedding for scRNA-seq data. With tnn, you can:
 
 * Integrate scRNA-seq datasets across batches with/without labels.
 * Build a low-dimensional representation of the scRNA-seq data.
@@ -11,15 +11,13 @@ The tnn calculates a deep integrated embedding for scRNA-seq data. With tnn, you
 ![tnn](https://github.com/lkmklsmn/tnn/blob/master/TNN_schematic.jpg)
 
 ## Check out our interactive tutorials!
-The following notebooks allow you to interactively explore bbtnn and can be run within your browser. We have prepared two analysis examples:
+The following notebooks can be run within your web browser and allow you to interactively explore tnn. We have prepared the following analysis examples:
 1. [Simulation dataset](https://github.com/lkmklsmn/bbtnn/tree/master/examples/TNN_Simulation.ipynb)
 2. [Pancreas dataset](https://github.com/lkmklsmn/bbtnn/tree/master/examples/TNN_pancreas_comparison.ipynb)
 
 ## Installation
 
-To install **tnn**, you must make sure that your python version is 3.x.x. 
-
-Now you can install the current release of bbtnn by the following ways:
+To install **tnn**, follow these instructions:
 
 
 ### Github
@@ -31,6 +29,7 @@ git clone http://github.com/lkmklsmn/tnn
 cd tnn
 pip install .
 ```
+
 ## Input
 ### Unsupervised model
 1. Adata with PCs
