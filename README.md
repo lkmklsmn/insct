@@ -22,6 +22,12 @@ To install **insct**, follow these instructions:
 
 ### Github
 
+Install directly from Github using pip:
+
+```alias
+pip install git+https://github.com/lkmklsmn/insct.git
+```
+
 Download the package from Github and install it locally:
 
 ```alias
