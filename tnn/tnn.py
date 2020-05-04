@@ -588,7 +588,7 @@ class TNN(BaseEstimator):
         self._fit(X, batch_name, celltype_name, mask_batch, cell_labeled, Y, shuffle_mode = shuffle_mode)
         return self
 
-    def fit_transform(self, X, batch_name, celltype_name=None, mask_batch=None, cell_labeled=None, Y=None, shuffle_mode=True):
+    def fit_transform(self, X, batch_name, celltype_name=None, mask_batch=None, cell_labeled=False, Y=None, shuffle_mode=True):
         """Fit to data then transform
         Parameters
         ----------
@@ -599,7 +599,7 @@ class TNN(BaseEstimator):
         X_new : transformed array, shape (n_samples, embedding_dims)
             Embedding of the new data in low-dimensional space.
         """
-        self.fit(X, batch_name, celltype_name,  mask_batch, Y, shuffle_mode)
+        self.fit(X, batch_name, celltype_name,  mask_batch, cell_labeled, Y, shuffle_mode)
         return self.transform(X)
 
     def transform(self, X):
