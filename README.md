@@ -1,5 +1,5 @@
 # insct ("Insight")
-**IN**tegration of **s**ingle **c**cells using batch-aware triplet networks
+**IN**tegration of millions of **S**ingle **C**cells using batch-aware **T**riplet networks
 
 tnn calculates an integrated embedding for scRNA-seq data. With insct, you can:
 
