@@ -48,6 +48,13 @@ Triplets sampled based on known labels
 2. Batch vector
 3. Celltype vector
 
+### Semi-supervised model
+Triplets sampled based on both transcriptional similarity and known labels
+1. AnnData object with PCs
+2. Batch vector
+3. Celltype vector
+4. Masking vector (which labels to ignore)
+
 ## Output
 1. Coordinates for the integrated embedding
 
