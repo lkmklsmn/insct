@@ -26,7 +26,7 @@ Download the package from Github and install it locally:
 
 ```alias
 git clone http://github.com/lkmklsmn/insct
-cd tnn
+cd insct
 pip install .
 ```
 
