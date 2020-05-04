@@ -35,7 +35,8 @@ pip install .
 1. AnnData object with PCs
 2. Batch vector
 
-### Supervised model (Triplet generated based on the known labels)
+### Supervised model
+Triplets sampled based on known labels
 1. AnnData object with PCs
 2. Batch vector
 3. Celltype vector
