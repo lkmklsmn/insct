@@ -1,14 +1,14 @@
-# tnn
-**t**riplet **n**eural **n**etwork for data integration
+# insct ("Insight")
+**IN**tegration of **s**ingle **c**cells using batch-aware triplet networks
 
-tnn calculates an integrated embedding for scRNA-seq data. With tnn, you can:
+tnn calculates an integrated embedding for scRNA-seq data. With insct, you can:
 
 * Integrate scRNA-seq datasets across batches with/without labels.
 * Build a low-dimensional representation of the scRNA-seq data.
 * Accurately predict cell types for an independent scRNAseq dataset.
 * Integration of millions of cells on personal computers.
 
-![tnn](https://github.com/lkmklsmn/tnn/blob/master/TNN_schematic.jpg)
+![tnn](https://github.com/lkmklsmn/insct/blob/master/TNN_schematic.jpg)
 
 ## Check out our interactive tutorials!
 The following notebooks can be run within your web browser and allow you to interactively explore tnn. We have prepared the following analysis examples:
@@ -17,7 +17,7 @@ The following notebooks can be run within your web browser and allow you to inte
 
 ## Installation
 
-To install **tnn**, follow these instructions:
+To install **insct**, follow these instructions:
 
 
 ### Github
@@ -25,31 +25,29 @@ To install **tnn**, follow these instructions:
 Download the package from Github and install it locally:
 
 ```alias
-git clone http://github.com/lkmklsmn/tnn
+git clone http://github.com/lkmklsmn/insct
 cd tnn
 pip install .
 ```
 
 ## Input
 ### Unsupervised model
-1. Adata with PCs
-2. Batch name
+1. AnnData object with PCs
+2. Batch vector
 
-### Label supervised model (Triplet generated based on the known labels)
-1. Adata with PCs
-2. Batch name
-3. Celltype name
+### Supervised model (Triplet generated based on the known labels)
+1. AnnData object with PCs
+2. Batch vector
+3. Celltype vector
 
-## Result
-1. Coordinates for the embedding layer 
-2. Visualization of the embedding layer
-
+## Output
+1. Coordinates for the integrated embedding
 
 ## Usage
 ### Unsupervised model
 
 ```alias
-from tnn.tnn import TNN
+from insct.tnn import TNN
 model = TNN(k=50, distance='pn', batch_size=32, n_epochs_without_progress=10, k_to_m_ratio = 0.01)
 model.fit(X = adata, Y = None, batch_name='batch')
 ```
