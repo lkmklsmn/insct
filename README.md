@@ -32,6 +32,7 @@ pip install .
 
 ## Input
 ### Unsupervised model
+Triplets sampled based on transcriptional similarity
 1. AnnData object with PCs
 2. Batch vector
 
