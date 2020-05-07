@@ -1,12 +1,11 @@
 # insct ("Insight")
-**IN**tegration of millions of **S**ingle **C**cells using batch-aware **T**riplet networks
+**IN**tegration of millions of **S**ingle **C**ells using batch-aware **T**riplet networks
 
-tnn calculates an integrated embedding for scRNA-seq data. With insct, you can:
+insct calculates an integrated embedding for scRNA-seq data. With insct, you can:
 
 * Integrate scRNA-seq datasets across batches with/without labels.
-* Build a low-dimensional representation of the scRNA-seq data.
-* Accurately predict cell types for an independent scRNAseq dataset.
-* Integration of millions of cells on personal computers.
+* Generate a low-dimensional representation of the scRNA-seq data.
+* Integrate of millions of cells on personal computers.
 
 ![tnn](https://github.com/lkmklsmn/insct/blob/master/TNN_schematic.jpg)
 
