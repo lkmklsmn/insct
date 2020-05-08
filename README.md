@@ -1,7 +1,7 @@
 # insct ("Insight")
 **IN**tegration of millions of **S**ingle **C**ells using batch-aware **T**riplet networks
 
-insct calculates an integrated embedding for scRNA-seq data. With insct, you can:
+insct is a deep learning algorithm which calculates an integrated embedding for scRNA-seq data. With insct, you can:
 
 * Integrate scRNA-seq datasets across batches with/without labels.
 * Generate a low-dimensional representation of the scRNA-seq data.
