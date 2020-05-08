@@ -10,7 +10,13 @@ insct is a deep learning algorithm which calculates an integrated embedding for 
 ## How does it work?
 ![tnn](https://github.com/lkmklsmn/insct/blob/master/TNN_schematic.jpg)
 
-Overview of INSCT: a, INSCT learns a data representation, which integrates cells across batches. The goal of the network is to minimize the distance between Anchor and Positive while maximizing the distance between Anchor and Negative. Anchor and Positive pairs consist of transcriptionally similar cells from different batches. The Negative is a transcriptomically dissimilar cell sampled from the same batch as the Anchor. b, Principal components of three data points corresponding to Anchor, Positive and Negative are fed into three identical neural networks, which share weights. The triplet loss function is used to train the network weights and the two-dimensional embedding layer activations represent the integrated embedding.
+**a**, INSCT learns a data representation, which integrates cells across batches. The goal of the network is to minimize the distance between Anchor and Positive while maximizing the distance between Anchor and Negative. Anchor and Positive pairs consist of transcriptionally similar cells from different batches. The Negative is a transcriptomically dissimilar cell sampled from the same batch as the Anchor. **b**, Principal components of three data points corresponding to Anchor, Positive and Negative are fed into three identical neural networks, which share weights. The triplet loss function is used to train the network weights and the two-dimensional embedding layer activations represent the integrated embedding.
+
+To learn an integrated embedding that overcomes batch effects, INSCT samples triplets in a batch-aware manner:
+
+NEXT GIF
+
+## What does it do?
 
 For example, we simulated scRNAseq data, where batch effects dominate the embedding:
 
