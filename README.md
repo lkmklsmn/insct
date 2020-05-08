@@ -12,6 +12,12 @@ insct calculates an integrated embedding for scRNA-seq data. With insct, you can
 
 Overview of INSCT: a, INSCT learns a data representation, which integrates cells across batches. The goal of the network is to minimize the distance between Anchor and Positive while maximizing the distance between Anchor and Negative. Anchor and Positive pairs consist of transcriptionally similar cells from different batches. The Negative is a transcriptomically dissimilar cell sampled from the same batch as the Anchor. b, Principal components of three data points corresponding to Anchor, Positive and Negative are fed into three identical neural networks, which share weights. The triplet loss function is used to train the network weights and the two-dimensional embedding layer activations represent the integrated embedding.
 
+For example, we simulated scRNAseq data, where batch effects dominate the embedding:
+
+![tnn](https://github.com/lkmklsmn/insct/blob/master/umap_embedding.png)
+
+However, INSCT learns an integrated embedding where cells cluster by group instead of batch:
+
 ![tnn](https://github.com/lkmklsmn/insct/blob/master/Simulation_animation.gif)
 
 ## Check out our interactive tutorials!
