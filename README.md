@@ -14,7 +14,7 @@ insct is a deep learning algorithm which calculates an integrated embedding for 
 
 To learn an integrated embedding that overcomes batch effects, INSCT samples triplets in a batch-aware manner:
 
-NEXT GIF
+![tnn](https://github.com/lkmklsmn/insct/blob/master/Sampling_animation.gif)
 
 ## What does it do?
 
