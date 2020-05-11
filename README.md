@@ -79,19 +79,19 @@ Triplets sampled based on both transcriptional similarity and known labels
 
 ```alias
 from insct.tnn import TNN
-model = TNN(k=50, distance='pn', batch_size=32, n_epochs_without_progress=10, k_to_m_ratio = 0.01)
+model = TNN()
 model.fit(X = adata, Y = None, batch_name='batch')
 ```
 
 ### Supervised model
 ```alias
-model = TNN(k=50, distance='pn', batch_size=64, n_epochs_without_progress=10, approx = False)
+model = TNN()
 model.fit(X = adata, Y = None, batch_name='batch', celltype_name='Celltypes', cell_labeled = True)
 ```
 
 ### Semi-supervised model
 
 ```alias
-model = TNN(k=50, distance='pn', batch_size=64, n_epochs_without_progress=10, approx = False)
+model = TNN()
 model.fit(X = adata, Y = None, batch_name='batch', celltype_name='Celltypes', cell_labeled = True, mask_batch= batch_name)
 ```
