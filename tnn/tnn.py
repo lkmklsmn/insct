@@ -65,7 +65,7 @@ def base_network(input_shape):
     return Model(inputs, x)
 
 
-def generator_from_index(adata, batch_name, celltype_name, mask_batch=None, cell_labeled=None, Y = None, k = 20, label_ratio = 0.8, k_to_m_ratio = 0.75, batch_size = 32, search_k=-1,
+def generator_from_index(adata, batch_name, celltype_name, mask_batch=None, Y = None, k = 20, label_ratio = 0.8, k_to_m_ratio = 0.75, batch_size = 32, search_k=-1,
                          save_on_disk = True, approx = True, verbose=1):
 
     print('version 0.0.1. 15:00, 04/22/2020')
@@ -82,7 +82,7 @@ def generator_from_index(adata, batch_name, celltype_name, mask_batch=None, cell
     if(verbose > 0):
         print(str(len(mnn_dict)) + " cells defined as MNNs")
         
-    if cell_labeled == False:
+    if Y == None:
         label_dict=dict()
     else:
         
@@ -451,13 +451,13 @@ class TNN(BaseEstimator):
             state['model_def'] = None
         return state
 
-    def _fit(self, X, batch_name, celltype_name=None, mask_batch=None, cell_labeled=None, Y=None, shuffle_mode=True):
+    def _fit(self, X, batch_name, celltype_name=None, mask_batch=None, Y=None, shuffle_mode=True):
 
         datagen = generator_from_index(X,
                                         batch_name = batch_name,
                                         celltype_name = celltype_name,
                                         mask_batch=mask_batch,
-                                       cell_labeled = cell_labeled, 
+                    
                                         Y = Y,
                                         k_to_m_ratio = self.k_to_m_ratio,
                                        label_ratio = self.label_ratio,
@@ -574,7 +574,7 @@ class TNN(BaseEstimator):
 
         self.loss_history_ += hist.history['loss']
 
-    def fit(self, X, batch_name, celltype_name=None, mask_batch=None, cell_labeled=False,  Y=None, shuffle_mode=True):
+    def fit(self, X, batch_name, celltype_name=None, mask_batch=None, Y=None, shuffle_mode=True):
         """Fit model.
         Parameters
         ----------
@@ -585,10 +585,10 @@ class TNN(BaseEstimator):
         -------
         returns an instance of self
         """
-        self._fit(X, batch_name, celltype_name, mask_batch, cell_labeled, Y, shuffle_mode = shuffle_mode)
+        self._fit(X, batch_name, celltype_name, mask_batch, Y, shuffle_mode = shuffle_mode)
         return self
 
-    def fit_transform(self, X, batch_name, celltype_name=None, mask_batch=None, cell_labeled=False, Y=None, shuffle_mode=True):
+    def fit_transform(self, X, batch_name, celltype_name=None, mask_batch=None, Y=None, shuffle_mode=True):
         """Fit to data then transform
         Parameters
         ----------
@@ -599,7 +599,7 @@ class TNN(BaseEstimator):
         X_new : transformed array, shape (n_samples, embedding_dims)
             Embedding of the new data in low-dimensional space.
         """
-        self.fit(X, batch_name, celltype_name,  mask_batch, cell_labeled, Y, shuffle_mode)
+        self.fit(X, batch_name, celltype_name,  mask_batch, Y, shuffle_mode)
         return self.transform(X)
 
     def transform(self, X):
