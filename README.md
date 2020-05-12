@@ -86,12 +86,12 @@ model.fit(X = adata, Y = None, batch_name='batch')
 ### Supervised model
 ```alias
 model = TNN()
-model.fit(X = adata, Y = None, batch_name='batch', celltype_name='Celltypes', cell_labeled = True)
+model.fit(X = adata, Y = None, batch_name='batch', celltype_name='Celltypes')
 ```
 
 ### Semi-supervised model
 
 ```alias
 model = TNN()
-model.fit(X = adata, Y = None, batch_name='batch', celltype_name='Celltypes', cell_labeled = True, mask_batch= batch_name)
+model.fit(X = adata, Y = None, batch_name='batch', celltype_name='Celltypes', mask_batch= batch_name)
 ```
