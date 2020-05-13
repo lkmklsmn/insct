@@ -484,9 +484,7 @@ class TNN(BaseEstimator):
                     triplet_network(self.model_def,
                                     embedding_dims=self.embedding_dims)
 
-            if Y is None:
-
-                self.model_.compile(optimizer='adam', loss=triplet_loss_func)
+            self.model_.compile(optimizer='adam', loss=triplet_loss_func)
 
         self.encoder = self.model_.layers[3]
 
