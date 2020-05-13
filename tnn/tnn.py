@@ -65,7 +65,7 @@ def base_network(input_shape):
     return Model(inputs, x)
 
 
-def generator_from_index(adata, batch_name, celltype_name, mask_batch=None, Y = None, k = 20, label_ratio = 0.8, k_to_m_ratio = 0.75, batch_size = 32, search_k=-1,
+def generator_from_index(adata, batch_name,  mask_batch=None, Y = None, k = 20, label_ratio = 0.8, k_to_m_ratio = 0.75, batch_size = 32, search_k=-1,
                          save_on_disk = True, approx = True, verbose=1):
 
     print('version 0.0.1. 15:00, 04/22/2020')
@@ -89,7 +89,7 @@ def generator_from_index(adata, batch_name, celltype_name, mask_batch=None, Y = 
         if (verbose > 0):
             print ('Generating supervised positive pairs...')
 
-        label_dict_original = create_dictionary_label(adata, batch_name=batch_name, celltype_name=celltype_name, mask_batch=mask_batch,  k=k, verbose=verbose)
+        label_dict_original = create_dictionary_label(adata, Y, batch_name=batch_name,  mask_batch=mask_batch,  k=k, verbose=verbose)
         num_label = round(label_ratio * len(label_dict_original))
 
         cells_for_label = np.random.choice(list(label_dict_original.keys()), num_label, replace = False)
@@ -260,12 +260,12 @@ class LabeledKnnTripletGenerator(Sequence):
         return triplets
 
 
-def create_dictionary_label(bdata, batch_name, mask_batch, celltype_name, k=50, verbose=1):
+def create_dictionary_label(bdata, Y, batch_name, mask_batch, k=50, verbose=1):
     
     #cell_names = adata.obs_names
     adata = bdata[bdata.obs[batch_name]!=mask_batch]
     batch_list = adata.obs[batch_name]
-    cell_types = adata.obs[celltype_name]
+    cell_types = Y[bdata.obs[batch_name]!=mask_batch]
 
     print (batch_list.unique())
     
@@ -455,9 +455,7 @@ class TNN(BaseEstimator):
 
         datagen = generator_from_index(X,
                                         batch_name = batch_name,
-                                        celltype_name = celltype_name,
                                         mask_batch=mask_batch,
-                    
                                         Y = Y,
                                         k_to_m_ratio = self.k_to_m_ratio,
                                        label_ratio = self.label_ratio,
@@ -574,7 +572,7 @@ class TNN(BaseEstimator):
 
         self.loss_history_ += hist.history['loss']
 
-    def fit(self, X, batch_name, celltype_name=None, mask_batch=None, Y=None, shuffle_mode=True):
+    def fit(self, X, batch_name, mask_batch=None, Y=None, shuffle_mode=True):
         """Fit model.
         Parameters
         ----------
@@ -585,10 +583,10 @@ class TNN(BaseEstimator):
         -------
         returns an instance of self
         """
-        self._fit(X, batch_name, celltype_name, mask_batch, Y, shuffle_mode = shuffle_mode)
+        self._fit(X, batch_name, mask_batch, Y, shuffle_mode = shuffle_mode)
         return self
 
-    def fit_transform(self, X, batch_name, celltype_name=None, mask_batch=None, Y=None, shuffle_mode=True):
+    def fit_transform(self, X, batch_name, mask_batch=None, Y=None, shuffle_mode=True):
         """Fit to data then transform
         Parameters
         ----------
@@ -599,7 +597,7 @@ class TNN(BaseEstimator):
         X_new : transformed array, shape (n_samples, embedding_dims)
             Embedding of the new data in low-dimensional space.
         """
-        self.fit(X, batch_name, celltype_name,  mask_batch, Y, shuffle_mode)
+        self.fit(X, batch_name, mask_batch, Y, shuffle_mode)
         return self.transform(X)
 
     def transform(self, X):
