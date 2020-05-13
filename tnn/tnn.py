@@ -89,7 +89,7 @@ def generator_from_index(adata, batch_name,  mask_batch=None, Y = None, k = 20, 
         if (verbose > 0):
             print ('Generating supervised positive pairs...')
 
-        label_dict_original = create_dictionary_label(adata, Y, batch_name=batch_name,  mask_batch=mask_batch,  k=k, verbose=verbose)
+        label_dict_original = create_dictionary_label(adata, Y=Y, batch_name=batch_name,  mask_batch=mask_batch,  k=k, verbose=verbose)
         num_label = round(label_ratio * len(label_dict_original))
 
         cells_for_label = np.random.choice(list(label_dict_original.keys()), num_label, replace = False)
@@ -264,9 +264,9 @@ def create_dictionary_label(bdata, Y, batch_name, mask_batch, k=50, verbose=1):
     
     #cell_names = adata.obs_names
     adata = bdata[bdata.obs[batch_name]!=mask_batch]
-    batch_list = adata.obs[batch_name]
     cell_types = Y[bdata.obs[batch_name]!=mask_batch]
-
+    batch_list = adata.obs[batch_name]
+    
     print (batch_list.unique())
     
     types = []
@@ -451,7 +451,7 @@ class TNN(BaseEstimator):
             state['model_def'] = None
         return state
 
-    def _fit(self, X, batch_name, celltype_name=None, mask_batch=None, Y=None, shuffle_mode=True):
+    def _fit(self, X, batch_name, mask_batch=None, Y=None, shuffle_mode=True):
 
         datagen = generator_from_index(X,
                                         batch_name = batch_name,
@@ -487,73 +487,6 @@ class TNN(BaseEstimator):
             if Y is None:
 
                 self.model_.compile(optimizer='adam', loss=triplet_loss_func)
-            else:
-                Y = le.fit_transform(Y)
-                if is_categorical(self.supervision_metric):
-                    if not is_multiclass(self.supervision_metric):
-                        if not is_hinge(self.supervision_metric):
-                            # Binary logistic classifier
-                            if len(Y.shape) > 1:
-                                self.n_classes = Y.shape[-1]
-                            else:
-                                self.n_classes = 1
-                            supervised_output = Dense(self.n_classes, activation='sigmoid',
-                                                      name='supervised')(anchor_embedding)
-                        else:
-                            # Binary Linear SVM output
-                            if len(Y.shape) > 1:
-                                self.n_classes = Y.shape[-1]
-                            else:
-                                self.n_classes = 1
-                            supervised_output = Dense(self.n_classes, activation='linear',
-                                                      name='supervised',
-                                                      kernel_regularizer=regularizers.l1(l1=0.01))(anchor_embedding)
-                    else:
-                        if not is_hinge(self.supervision_metric):
-                            validate_sparse_labels(Y)
-                            self.n_classes = len(np.unique(Y[Y != np.array(-1)]))
-                            # Softmax classifier
-                            supervised_output = Dense(self.n_classes, activation='softmax',
-                                                      name='supervised')(anchor_embedding)
-                        else:
-                            self.n_classes = len(np.unique(Y, axis=0))
-                            # Multiclass Linear SVM output
-                            supervised_output = Dense(self.n_classes, activation='linear',
-                                                      name='supervised',
-                                                      kernel_regularizer=regularizers.l1(l1=0.01))(anchor_embedding)
-                else:
-                    # Regression
-                    if len(Y.shape) > 1:
-                        self.n_classes = Y.shape[-1]
-                    else:
-                        self.n_classes = 1
-                    supervised_output = Dense(self.n_classes, activation='linear',
-                                              name='supervised')(anchor_embedding)
-
-                supervised_loss = keras.losses.get(self.supervision_metric)
-                if self.supervision_metric == 'sparse_categorical_crossentropy':
-                    supervised_loss = semi_supervised_loss(supervised_loss)
-
-                final_network = Model(inputs=self.model_.inputs,
-                                      outputs=[self.model_.output,
-                                               supervised_output])
-                self.model_ = final_network
-                self.model_.compile(
-                    optimizer='adam',
-                    loss={
-                        'stacked_triplets': triplet_loss_func,
-                        'supervised': supervised_loss
-                         },
-                    loss_weights={
-                        'stacked_triplets': 1 - self.supervision_weight,
-                        'supervised': self.supervision_weight})
-
-                # Store dedicated classification model
-                supervised_model_input = Input(shape=(X.obsm['X_pca'].shape[-1],))
-                embedding = self.model_.layers[3](supervised_model_input)
-                softmax_out = self.model_.layers[-1](embedding)
-
-                self.supervised_model_ = Model(supervised_model_input, softmax_out)
 
         self.encoder = self.model_.layers[3]
 
