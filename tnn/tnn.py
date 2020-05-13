@@ -451,7 +451,7 @@ class TNN(BaseEstimator):
             state['model_def'] = None
         return state
 
-    def _fit(self, X, batch_name, mask_batch=None, Y=None, shuffle_mode=True):
+    def _fit(self, X, batch_name, celltype_name=None, mask_batch=None, Y=None, shuffle_mode=True):
 
         datagen = generator_from_index(X,
                                         batch_name = batch_name,
@@ -584,7 +584,7 @@ class TNN(BaseEstimator):
         -------
         returns an instance of self
         """
-        self._fit(X, batch_name, celltype_name, mask_batch, Y, shuffle_mode = shuffle_mode)
+        self._fit(X, batch_name, celltype_name, mask_batch, Y, shuffle_mode)
         return self
 
     def fit_transform(self, X, batch_name, celltype_name=None, mask_batch=None, Y=None, shuffle_mode=True):
