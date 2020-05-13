@@ -59,12 +59,12 @@ Triplets sampled based on transcriptional similarity
 2. Batch vector
 
 ### Supervised model
-Triplets sampled based on known labels
+Triplets sampled based on both transcriptional similarity and known labels
 1. AnnData object with PCs
 2. Batch vector
 3. Celltype vector
 
-### Semi-supervised model
+### Semi-supervised model 
 Triplets sampled based on both transcriptional similarity and known labels
 1. AnnData object with PCs
 2. Batch vector
@@ -80,18 +80,18 @@ Triplets sampled based on both transcriptional similarity and known labels
 ```alias
 from insct.tnn import TNN
 model = TNN()
-model.fit(X = adata, Y = None, batch_name='batch')
+model.fit(X = adata, batch_name='batch')
 ```
 
 ### Supervised model
 ```alias
 model = TNN()
-model.fit(X = adata, Y = adata.obs['Celltypes'], batch_name='batch', celltype_name='Celltypes')
+model.fit(X = adata, batch_name='batch', celltype_name='Celltypes')
 ```
 
 ### Semi-supervised model
 
 ```alias
 model = TNN()
-model.fit(X = adata, Y = adata.obs['Celltypes'], batch_name='batch', celltype_name='Celltypes', mask_batch= batch_name)
+model.fit(X = adata, batch_name='batch', celltype_name='Celltypes', mask_batch= batch_name)
 ```
