@@ -82,7 +82,7 @@ def generator_from_index(adata, batch_name,  celltype_name=None, mask_batch=None
     if(verbose > 0):
         print(str(len(mnn_dict)) + " cells defined as MNNs")
         
-    if celltpe_name is None:
+    if celltype_name is None:
         label_dict=dict()
     else:
         
