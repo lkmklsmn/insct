@@ -7,6 +7,8 @@ insct is a deep learning algorithm which calculates an integrated embedding for 
 * Generate a low-dimensional representation of the scRNA-seq data.
 * Integrate of millions of cells on personal computers.
 
+For more info check out our [preprint](https://www.biorxiv.org/content/10.1101/2020.05.16.100024v1).
+
 ## How does it work?
 ![tnn](https://github.com/lkmklsmn/insct/blob/master/TNN_schematic.jpg)
 
@@ -31,10 +33,11 @@ The following notebooks can be run within your web browser and allow you to inte
 1. [Simulation dataset](https://colab.research.google.com/drive/1LEDnRwFH2v166T-pUaCYb6TZMgfViO-W?usp=sharing)
 2. [Pancreas dataset](https://colab.research.google.com/drive/1vnIt7AfScGcCww5RzYfpsRk1KfK5_pa_#scrollTo=lsXOijhrcDwd)
 
+Notebooks to reproduce the analyses described in our preprint can be found in the _reproducibility_ folder.
+
 ## Installation
 
 To install **insct**, follow these instructions:
-
 
 ### Github
 
