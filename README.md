@@ -37,6 +37,13 @@ Notebooks to reproduce the analyses described in our preprint can be found in th
 
 ## Installation
 
+**insct** depends on the following Python packages. These need to be installed separately:
+```
+ivis
+scanpy
+hnswlib
+```
+
 To install **insct**, follow these instructions:
 
 ### Github
