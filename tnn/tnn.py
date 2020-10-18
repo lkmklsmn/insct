@@ -107,7 +107,7 @@ def generator_from_index(adata, batch_name,  celltype_name=None, mask_batch=None
     else:
         num_k = round(k_to_m_ratio * len(mnn_dict))
         # Calculate KNNs for subset of residual cells
-        cells_for_knn = list(set(cells) - set(list(label_dict.keys()))| set(list(mnn_dict.keys())))
+        cells_for_knn = list(set(cells) - (set(list(label_dict.keys()))| set(list(mnn_dict.keys()))))
         if(len(cells_for_knn) > num_k):
             cells_for_knn = np.random.choice(cells_for_knn, num_k, replace = False)
 
