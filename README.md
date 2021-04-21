@@ -39,7 +39,7 @@ Notebooks to reproduce the analyses described in our preprint can be found in th
 
 **insct** depends on the following Python packages. These need to be installed separately:
 ```
-ivis
+ivis==1.7.2
 scanpy
 hnswlib
 ```
