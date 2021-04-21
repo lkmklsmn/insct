@@ -31,7 +31,7 @@ However, INSCT learns an integrated embedding where cells cluster by group inste
 ## Check out our interactive tutorials!
 The following notebooks can be run within your web browser and allow you to interactively explore tnn. We have prepared the following analysis examples:
 1. [Simulation dataset](https://colab.research.google.com/drive/1LEDnRwFH2v166T-pUaCYb6TZMgfViO-W?usp=sharing)
-2. [Pancreas dataset](https://colab.research.google.com/drive/1vnIt7AfScGcCww5RzYfpsRk1KfK5_pa_#scrollTo=lsXOijhrcDwd)
+2. [Pancreas dataset](https://colab.research.google.com/drive/1v_B0pXVYMqHsV2polaoRHkxflrNcQGej?usp=sharing)
 
 Notebooks to reproduce the analyses described in our preprint can be found in the _reproducibility_ folder.
 
