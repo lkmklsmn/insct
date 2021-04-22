@@ -62,30 +62,11 @@ cd insct
 pip install .
 ```
 
-## Input
+## Usage
 ### Unsupervised model
 Triplets sampled based on transcriptional similarity
 1. AnnData object with PCs
 2. Batch vector
-
-### Supervised model
-Triplets sampled based on both transcriptional similarity and known labels
-1. AnnData object with PCs
-2. Batch vector
-3. Celltype vector
-
-### Semi-supervised model 
-Triplets sampled based on both transcriptional similarity and known labels
-1. AnnData object with PCs
-2. Batch vector
-3. Celltype vector
-4. Masking vector (which labels to ignore)
-
-## Output
-1. Coordinates for the integrated embedding
-
-## Usage
-### Unsupervised model
 
 ```alias
 from insct.tnn import TNN
@@ -94,14 +75,30 @@ model.fit(X = adata, batch_name='batch')
 ```
 
 ### Supervised model
+Triplets sampled based on both transcriptional similarity and known labels
+1. AnnData object with PCs
+2. Batch vector
+3. Celltype vector
+
 ```alias
 model = TNN()
 model.fit(X = adata, batch_name='batch', celltype_name='Celltypes')
 ```
 
-### Semi-supervised model
+### Semi-supervised model 
+Triplets sampled based on both transcriptional similarity and known labels
+1. AnnData object with PCs
+2. Batch vector
+3. Celltype vector
+4. Masking vector (which labels to ignore)
 
 ```alias
 model = TNN()
 model.fit(X = adata, batch_name='batch', celltype_name='Celltypes', mask_batch= batch_name)
 ```
+
+## Output
+1. Coordinates for the integrated embedding
+
+
+
