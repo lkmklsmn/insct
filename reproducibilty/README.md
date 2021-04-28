@@ -1,5 +1,5 @@
 
-Google Colab notebooks to reproduce the analysis described in our preprint can be accessed here:
+Google Colab notebooks to reproduce the analysis described in our manuscript can be accessed here:
 
 1. [Fig2 - Simulation analysis](https://colab.research.google.com/drive/1LEDnRwFH2v166T-pUaCYb6TZMgfViO-W?usp=sharing)
 2. [Fig3 - Tabula Muris integration](https://colab.research.google.com/drive/1y2z0vQmA2SQNrj9XAfuhiFDm19XeubOn?usp=sharing)
