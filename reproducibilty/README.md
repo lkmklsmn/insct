@@ -7,4 +7,4 @@ Google Colab notebooks to reproduce the analysis described in our preprint can b
 4. [Fig4 - Mouse-human integration](https://colab.research.google.com/drive/1oy5b9HoKrPktOB3KqHvhtOOflFmrfPRr?usp=sharing)
 5. [Fig4 - Mouse-human evaluation](https://colab.research.google.com/drive/12alsy9-ANbFVRQ7jmOYO2VoE6BLZuJqZ?usp=sharing)
 6. [Fig5 - Pancreas semi-supervised integration](https://colab.research.google.com/drive/1Ulj0ghqdRMjedUQKHECyoQQyl8j4tdJF?usp=sharing)
-7. [Fig6 -]
+7. [Fig6 - Mouse brain integration]()
