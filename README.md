@@ -7,7 +7,7 @@ insct is a deep learning algorithm which calculates an integrated embedding for 
 * Generate a low-dimensional representation of the scRNA-seq data.
 * Integrate of millions of cells on personal computers.
 
-For more info check out our [preprint](https://www.biorxiv.org/content/10.1101/2020.05.16.100024v1).
+For more info check out our [manuscript](https://go.nature.com/2Uq73If).
 
 ## How does it work?
 ![tnn](https://github.com/lkmklsmn/insct/blob/master/TNN_schematic.jpg)
