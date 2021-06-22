@@ -1,7 +1,7 @@
 # insct ("Insight")
 **IN**tegration of millions of **S**ingle **C**ells using batch-aware **T**riplet networks
 
-insct is a deep learning algorithm which calculates an integrated embedding for scRNA-seq data. With insct, you can:
+`INSCT` is a deep learning algorithm which calculates an integrated embedding for scRNA-seq data. With `INSCT`, you can:
 
 * Integrate scRNA-seq datasets across batches with/without labels.
 * Generate a low-dimensional representation of the scRNA-seq data.
@@ -12,9 +12,10 @@ For more info check out our [manuscript](https://go.nature.com/2Uq73If).
 ## How does it work?
 ![tnn](https://github.com/lkmklsmn/insct/blob/master/TNN_schematic.jpg)
 
-**a**, INSCT learns a data representation, which integrates cells across batches. The goal of the network is to minimize the distance between Anchor and Positive while maximizing the distance between Anchor and Negative. Anchor and Positive pairs consist of transcriptionally similar cells from different batches. The Negative is a transcriptomically dissimilar cell sampled from the same batch as the Anchor. **b**, Principal components of three data points corresponding to Anchor, Positive and Negative are fed into three identical neural networks, which share weights. The triplet loss function is used to train the network weights and the two-dimensional embedding layer activations represent the integrated embedding.
+ 1. `INSCT` learns a data representation, which integrates cells across batches. The goal of the network is to minimize the distance between Anchor and Positive while maximizing the distance between Anchor and Negative. Anchor and Positive pairs consist of transcriptionally similar cells from different batches. The Negative is a transcriptomically dissimilar cell sampled from the same batch as the Anchor.
+ 1. Principal components of three data points corresponding to Anchor, Positive and Negative are fed into three identical neural networks, which share weights. The triplet loss function is used to train the network weights and the two-dimensional embedding layer activations represent the integrated embedding.
 
-To learn an integrated embedding that overcomes batch effects, INSCT samples triplets in a batch-aware manner:
+To learn an integrated embedding that overcomes batch effects, `INSCT` samples triplets in a batch-aware manner:
 
 ![tnn](https://github.com/lkmklsmn/insct/blob/master/Sampling_animation.gif)
 
@@ -24,7 +25,7 @@ For example, we simulated scRNAseq data, where batch effects dominate the embedd
 
 ![tnn](https://github.com/lkmklsmn/insct/blob/master/umap_embedding.png)
 
-However, INSCT learns an integrated embedding where cells cluster by group instead of batch:
+However, `INSCT` learns an integrated embedding where cells cluster by group instead of batch:
 
 ![tnn](https://github.com/lkmklsmn/insct/blob/master/Simulation_animation.gif)
 
@@ -37,14 +38,14 @@ Notebooks to reproduce the analyses described in our preprint can be found in th
 
 ## Installation
 
-**insct** depends on the following Python packages. These need to be installed separately:
+`INSCT` depends on the following Python packages. These need to be installed separately:
 ```
 ivis==1.7.2
 scanpy
 hnswlib
 ```
 
-To install **insct**, follow these instructions:
+To install `INSCT`, follow these instructions:
 
 ### Github
 
